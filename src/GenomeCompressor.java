@@ -26,7 +26,12 @@ public class GenomeCompressor {
     public static void compress() {
 
         // TODO: complete the compress() method
-
+        String s = BinaryStdIn.readString();
+        int n = s.length();
+        int BITS_Per_Char = 7;
+        for (int i =0; i < n; i++){
+            BinaryStdOut.write(s.charAt(i), BITS_Per_Char);
+        }
         BinaryStdOut.close();
     }
 
