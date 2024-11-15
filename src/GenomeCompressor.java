@@ -24,13 +24,25 @@ public class GenomeCompressor {
      * { A, C, T, G } from standard input; compresses and writes the results to standard output.
      */
     public static void compress() {
+//        int a = 0;
+//        int c = 1;
+//        int t = 2;
+//        int g = 3;
 
         // TODO: complete the compress() method
         String s = BinaryStdIn.readString();
         int n = s.length();
-        int BITS_Per_Char = 7;
+        Integer[] word = new Integer[85];
+        word['A'] = 0;
+        word['C'] = 1;
+        word['T'] = 2;
+        word['G'] = 3;
+        char current;
+        int BITS_Per_Char = 2;
+        BinaryStdOut.write(n);
         for (int i =0; i < n; i++){
-            BinaryStdOut.write(s.charAt(i), BITS_Per_Char);
+            current = s.charAt(i);
+            BinaryStdOut.write(word[current], BITS_Per_Char);
         }
         BinaryStdOut.close();
     }
@@ -39,9 +51,18 @@ public class GenomeCompressor {
      * Reads a binary sequence from standard input; expands and writes the results to standard output.
      */
     public static void expand() {
-
+        char[] word = new char[4];
+        word[0] = 'A';
+        word[1] = 'C';
+        word[2] = 'T';
+        word[3] = 'G';
+        int current;
         // TODO: complete the expand() method
-
+        int n = BinaryStdIn.readInt();
+        for (int i = 0; i < n; i++){
+            current = BinaryStdIn.readInt(2);
+            BinaryStdOut.write(word[current]);
+        }
         BinaryStdOut.close();
     }
 
